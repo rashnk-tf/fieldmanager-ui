@@ -1,0 +1,78 @@
+<div class="row container" ng-if="objects">
+  <div class="col-12" style="margin:0px">
+    <div class="btn-group" uib-dropdown>
+      <button id="split-button" type="button" class="btn btn-danger">
+        {{selectedObject?selectedObject.name: 'Objects'}}</button>
+      <button type="button" class="btn btn-danger" uib-dropdown-toggle>
+        <span class="caret"></span>
+        <span class="sr-only">Split button!</span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+        <li role="menuitem" ng-repeat="item in objects" ng-click="selectObject(item)"><a href="#">{{item.Object.name}}</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" uib-dropdown>
+      <button id="split-button" type="button" class="btn btn-danger">
+        {{selectedFields.length == 1 ? selectedFields[0].name : 'Fields'}}        
+      </button>
+      <button type="button" class="btn btn-danger" uib-dropdown-toggle>
+        <span class="caret"></span>
+        <span class="sr-only">Split button!</span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+        <li role="menuitem" ng-repeat="field in selectedObject.fields" ng-click="selectField(field)"><a href="#">{{field.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="padding-top:5px">
+  <div class="col-md-6 col-lg-3">
+    <rd-widget>
+      <rd-widget-header class="main-handle" icon="fa-list-alt" title="Fields">
+      </rd-widget-header>
+      <rd-widget-body classes="medium1 no-padding">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody dragula='"fields-bag"' dragula-model="selectedFields">
+              <tr ng-if="selectedFields.length==0">
+                  <td> (empty)</td>
+              </tr>
+              <tr ng-repeat="field in selectedFields">
+                <td><i class="fa fa-bars fields-handle" aria-hidden="true"></i> </td>
+                <td>{{field.name}}</td>
+                <td>{{field.ApiName}}</td>
+                <!-- <td><span class="text-success"><i class="fa fa-check"></i></span></td> -->
+              </tr>
+             </tbody>
+          </table>
+        </div>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div> 
+
+<div class="row" dragula='"main-bag"' dragula-model="sections">
+
+  <div class="col-md-6 col-lg-4 main-handle" ng-repeat="item in sections">
+    <rd-widget>
+      <rd-widget-header icon="fa-arrows main-handle" title="{{item.section.name}}">
+      </rd-widget-header>
+      <rd-widget-body classes="small no-padding">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody dragula='"fields-bag"' dragula-model="item.section.fields">
+              <tr ng-repeat="field in item.section.fields">
+                <td><i class="fa fa-bars fields-handle" aria-hidden="true"></i> </td>
+                <td>{{field.name}}</td>
+                <td>{{field.ApiName}}</td>
+                <!-- <td><span class="text-success"><i class="fa fa-check"></i></span></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>

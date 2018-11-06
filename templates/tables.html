@@ -1,0 +1,31 @@
+ 
+   <div class="parent">
+    <label for="hy">Drag + to move Sections</label>
+    <div class="wrapper">
+      <div class="container" dragula='"sixth-bag"'>
+        <div><span class="handle">+ Section 1</span>
+          <div class="container" ng-repeat="group in groups" dragula="'section1'" dragula-scope="$parent">
+            <div ng-repeat="item in group.items" ng-bind="item.name"></div>
+          </div>
+        </div>
+        <div><span class="handle">+ Section 2</span>
+          <div class="container" ng-repeat="group in groups1" dragula="'section1'" dragula-scope="$parent">
+            <div ng-repeat="item in group.items" ng-bind="item.name"></div>
+          </div>
+        </div>
+      </div>
+      <div class="container" dragula='"sixth-bag"'>
+        <div><span class="handle">+ Section 3</span>
+          <div class="container" ng-repeat="group in groups2" dragula="'nested-bag'" dragula-scope="$parent">
+            <div ng-repeat="item in group.items" ng-bind="item.name"></div>
+          </div>
+
+        </div>
+        <div><span class="handle">+ Section 4</span>
+         <div>Not draggable 1</div>
+         <div>Not draggable 2</div>
+        </div>
+      </div>
+    </div>
+
+  </div>

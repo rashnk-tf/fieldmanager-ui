@@ -1,0 +1,34 @@
+[
+    {
+        "Object": {
+            "name": "Application",
+            "Api Name": "TFSF_applicationc",
+            "fields": [
+                {
+                    "name": "city",
+                    "ApiName": "Cityc"
+                },
+                {
+                    "name": "Country",
+                    "ApiName": "Country__c"
+                }
+            ]
+        }
+    },
+    {
+        "Object": {
+            "name": "Identity",
+            "Api Name": "TFSF_Identityc",
+            "fields": [
+                {
+                    "name": "state",
+                    "ApiName": "StateC"
+                },
+                {
+                    "name": "pin",
+                    "ApiName": "Pin_c"
+                }
+            ]
+        }
+    }
+]
